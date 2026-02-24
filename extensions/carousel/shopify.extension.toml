@@ -6,10 +6,10 @@
 api_version = "2026-01"
 
 [[extensions]]
-name = "countdown"
-handle = "countdown"
+name = "carousel"
+handle = "carousel"
 type = "ui_extension"
-uid = "87aed1c6-4be4-f2bf-da66-cde4204058bdbe40422e"
+uid = "1f555a1e-2e8b-2bd1-8906-c2df238d919d2cd8209f"
 
 # Controls where in Shopify your extension will be injected,
 # and the file that contains your extension’s source code. Learn more:
@@ -33,12 +33,9 @@ api_access = true
 # products, customers, and more. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#metafields
 
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_key"
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_other_key"
+[[extensions.metafields]]
+namespace = "$app"
+key = "requestedFreeGift"
 
 # Defines settings that will be collected from merchants installing
 # your extension. Learn more:
@@ -50,25 +47,3 @@ api_access = true
 # type = "single_line_text_field"
 # name = "Banner title"
 # description = "Enter a title for the banner"
-
-[extensions.settings]
-
-[[extensions.settings.fields]]
-key = "banner_heading"
-type = "single_line_text_field"
-name = "Banner heading"
-description = "Heading shown at the top of the banner"
-default = "Countdown Timer"
-
-[[extensions.settings.fields]]
-key = "banner_text"
-type = "single_line_text_field"
-name = "Banner text"
-description = "Text shown before the countdown"
-
-[[extensions.settings.fields]]
-key = "minutes"
-type = "number_integer"
-name = "Countdown minutes"
-description = "How many minutes to count down from"
-default = 5

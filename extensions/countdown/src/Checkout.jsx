@@ -6,6 +6,7 @@ export default async () => {
   render(<Extension />, document.body);
 };
 
+
 function Extension() {
   // Pull initial values
   const [bannerText, setBannerText] = useState(
@@ -41,19 +42,25 @@ function Extension() {
     return () => clearInterval(id);
   }, []);
 
+  const heading =
+    typeof shopify.settings.value.banner_heading === 'string'
+      ? shopify.settings.value.banner_heading.trim()
+      : '🔥VALENTINE’S SALE ';
+  
   return (
     <CountdownTimer
       initialTime={minutes * 60}
+      heading={heading}
       text={bannerText}
       onExpire={() => console.log('Countdown expired!')}
     />
   );
 }
 
-function CountdownTimer({initialTime, onExpire, text}) {
+function CountdownTimer({initialTime, onExpire, text, heading}) {
+  const totalTime = initialTime; // configured duration in seconds
   const [timeLeft, setTimeLeft] = useState(initialTime);
 
-  // ✅ Reset countdown if minutes changes
   useEffect(() => {
     setTimeLeft(initialTime);
   }, [initialTime]);
@@ -72,20 +79,33 @@ function CountdownTimer({initialTime, onExpire, text}) {
     if (timeLeft === 0) onExpire?.();
   }, [timeLeft, onExpire]);
 
+  // ✅ Tone rules:
+  // - Red if final 120s
+  // - Green if in the first half of total time
+  // - Yellow otherwise
+  const tone = (() => {
+    const FINAL_RED_SECONDS = 120;
+
+    // If total is <= 2 mins, just go red for the entire countdown
+    if (totalTime <= FINAL_RED_SECONDS) return 'critical';
+
+    if (timeLeft <= FINAL_RED_SECONDS) return 'critical';
+
+    const halfPoint = Math.ceil(totalTime / 2);
+
+    if (timeLeft > halfPoint) return 'success';
+
+    return 'warning';
+  })();
+
   const formatMMSS = (secondsTotal) => {
     const mm = Math.floor(secondsTotal / 60);
     const ss = secondsTotal % 60;
     return `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
   };
 
-
-  const heading =
-    typeof shopify.settings.value.banner_heading === 'string'
-      ? shopify.settings.value.banner_heading.trim()
-      : '🔥VALENTINE’S SALE ';
-  
   return (
-    <s-banner heading={heading} tone="critical">
+    <s-banner heading={heading} tone={tone}>
       <s-text>
         {text}: {formatMMSS(timeLeft)}
       </s-text>

@@ -47,3 +47,96 @@ key = "requestedFreeGift"
 # type = "single_line_text_field"
 # name = "Banner title"
 # description = "Enter a title for the banner"
+
+[extensions.settings]
+
+# Optional header text (matches your Trustpilot-like header)
+[[extensions.settings.fields]]
+key = "header_label"
+type = "single_line_text_field"
+name = "Header label"
+description = "Example: Excellent"
+
+[[extensions.settings.fields]]
+key = "brand_label"
+type = "single_line_text_field"
+name = "Brand label"
+description = "Example: Trustpilot (or your brand)"
+
+[[extensions.settings.fields]]
+key = "header_rating"
+type = "number_integer"
+name = "Header rating (1–5)"
+description = "Stars shown in the header"
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "1"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "5"
+
+# ===== Testimonial 1 =====
+[[extensions.settings.fields]]
+key = "t1_title"
+type = "single_line_text_field"
+name = "Testimonial 1 — Title"
+
+[[extensions.settings.fields]]
+key = "t1_body"
+type = "multi_line_text_field"
+name = "Testimonial 1 — Body"
+
+[[extensions.settings.fields]]
+key = "t1_author"
+type = "single_line_text_field"
+name = "Testimonial 1 — Author"
+
+[[extensions.settings.fields]]
+key = "t1_meta"
+type = "single_line_text_field"
+name = "Testimonial 1 — Meta (e.g., 2 days ago)"
+
+[[extensions.settings.fields]]
+key = "t1_rating"
+type = "number_integer"
+name = "Testimonial 1 — Rating (1–5)"
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "1"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "5"
+
+# ===== Testimonial 2 =====
+[[extensions.settings.fields]]
+key = "t2_title"
+type = "single_line_text_field"
+name = "Testimonial 2 — Title"
+
+[[extensions.settings.fields]]
+key = "t2_body"
+type = "multi_line_text_field"
+name = "Testimonial 2 — Body"
+
+[[extensions.settings.fields]]
+key = "t2_author"
+type = "single_line_text_field"
+name = "Testimonial 2 — Author"
+
+[[extensions.settings.fields]]
+key = "t2_meta"
+type = "single_line_text_field"
+name = "Testimonial 2 — Meta"
+
+[[extensions.settings.fields]]
+key = "t2_rating"
+type = "number_integer"
+name = "Testimonial 2 — Rating (1–5)"
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "1"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "5"
+
+# Repeat t3_*, t4_*, t5_* as needed

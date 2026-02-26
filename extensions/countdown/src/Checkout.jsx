@@ -107,7 +107,7 @@ function CountdownTimer({initialTime, onExpire, text, heading}) {
   return (
     <s-banner heading={heading} tone={tone}>
       <s-text>
-        {text}: {formatMMSS(timeLeft)}
+        {timeLeft === 0 ? 'Cart has been unreserved' : `${text}: ${formatMMSS(timeLeft)}`}
       </s-text>
     </s-banner>
   );

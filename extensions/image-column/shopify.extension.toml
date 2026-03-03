@@ -6,10 +6,10 @@
 api_version = "2026-01"
 
 [[extensions]]
-name = "usp-list"
-handle = "usp-list"
+name = "image-column"
+handle = "image-column"
 type = "ui_extension"
-uid = "66ccdb94-f01a-871c-8dc1-046fa93f49e277d2fa68"
+uid = "e29c56e6-d294-f038-282b-6251aadeb2f191f316e4"
 
 # Controls where in Shopify your extension will be injected,
 # and the file that contains your extension’s source code. Learn more:
@@ -33,32 +33,36 @@ api_access = true
 # products, customers, and more. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#metafields
 
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_key"
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_other_key"
+[[extensions.metafields]]
+namespace = "$app"
+key = "requestedFreeGift"
 
 # Defines settings that will be collected from merchants installing
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#settings-definition
 
+# [extensions.settings]
+# [[extensions.settings.fields]]
+# key = "banner_title"
+# type = "single_line_text_field"
+# name = "Banner title"
+# description = "Enter a title for the banner"
+
 [extensions.settings]
-[[extensions.settings.fields]]
-key = "usp_heading"
-type = "single_line_text_field"
-name = "USP Heading"
-description = "Enter a heading for the USP list"
+  [[extensions.settings.fields]]
+  key = "img1_url"
+  type = "single_line_text_field"
+  name = "Image 1 URL"
+  default = ""
 
-[[extensions.settings.fields]]
-key = "usp_text"
-type = "single_line_text_field"
-name = "USP Text"
-description = "Enter text for the USP list"
+  [[extensions.settings.fields]]
+  key = "img2_url"
+  type = "single_line_text_field"
+  name = "Image 2 URL"
+  default = ""
 
-[[extensions.settings.fields]]
-key = "usp_image"
-type = "single_line_text_field"
-name = "USP Image URL"
-description = "Enter a URL for the USP image"
+  [[extensions.settings.fields]]
+  key = "img3_url"
+  type = "single_line_text_field"
+  name = "Image 3 URL"
+  default = ""
